@@ -41,6 +41,31 @@ gym.register(
     disable_env_checker=True,
 )
 
+
+##
+# Joint Position Control with Camera
+##
+
+gym.register(
+    id="Isaac-Lift-Cube-Franka-Camera-v0",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.joint_pos_camera_env_cfg:FrankaCubeLiftEnvCameraCfg",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:LiftCubePPORunnerCfg",
+    },
+    disable_env_checker=True,
+)
+
+gym.register(
+    id="Isaac-Lift-Cube-Franka-Camera-Play-v0",
+    entry_point="isaaclab.envs:ManagerBasedRLEnv",
+    kwargs={
+        "env_cfg_entry_point": f"{__name__}.joint_pos_camera_env_cfg:FrankaCubeLiftEnvCameraCfg_PLAY",
+        "rsl_rl_cfg_entry_point": f"{agents.__name__}.rsl_rl_ppo_cfg:LiftCubePPORunnerCfg",
+    },
+    disable_env_checker=True,
+)
+
 ##
 # Inverse Kinematics - Absolute Pose Control
 ##
