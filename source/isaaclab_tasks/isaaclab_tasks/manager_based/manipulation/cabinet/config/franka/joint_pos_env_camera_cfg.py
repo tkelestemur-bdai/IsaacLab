@@ -21,6 +21,7 @@ class FrankaCabinetEnvCameraCfg(FrankaCabinetEnvCfg):
         else:
             print("[INFO]: No cabinet frame found in environment configuration")
 
+        self.episode_length_s = 2.0
         self.cam_width = 320
         self.cam_height = 240
 
