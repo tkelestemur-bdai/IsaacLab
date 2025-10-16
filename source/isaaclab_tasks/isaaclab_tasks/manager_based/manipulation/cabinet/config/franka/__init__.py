@@ -40,24 +40,6 @@ gym.register(
 )
 
 
-gym.register(
-    id="Isaac-Open-Drawer-Franka-Camera-v0",
-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
-    kwargs={
-        "env_cfg_entry_point": f"{__name__}.joint_pos_env_camera_cfg:FrankaCabinetEnvCameraCfg",
-    },
-    disable_env_checker=True,
-)
-
-gym.register(
-    id="Isaac-Open-Drawer-Franka-Camera-Play-v0",
-    entry_point="isaaclab.envs:ManagerBasedRLEnv",
-    kwargs={
-        "env_cfg_entry_point": f"{__name__}.joint_pos_env_camera_cfg:FrankaCabinetEnvCameraCfg_PLAY",
-    },
-    disable_env_checker=True,
-)
-
 ##
 # Inverse Kinematics - Absolute Pose Control
 ##
