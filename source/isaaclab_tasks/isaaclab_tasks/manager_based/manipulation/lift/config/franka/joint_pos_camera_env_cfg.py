@@ -37,7 +37,7 @@ class FrankaCubeLiftEnvCameraCfg(FrankaCubeLiftEnvCfg):
                 # pos=(0.0, 0.0, 2.5),  # Position above the cabinet (cabinet is at 0.8, 0, 0.4)
                 # rot=(0.0, 0.7071, -0.7071, 0.0),  # -90° around Y axis for top-down view
                 # rot=(1.0, 0.0, 0.0, 0.0),
-                pos=(1.6, 0.0, 0.7),
+                pos=(1.7, 0.0, 0.8),
                 rot=(0.35355, -0.61237, -0.61237, 0.35355),
                 convention="ros",
             ),
@@ -51,29 +51,29 @@ class FrankaCubeLiftEnvCameraCfg(FrankaCubeLiftEnvCfg):
 
         setattr(self.scene, "front_camera", front_cam_cfg)
 
-        wrist_cam_cfg = TiledCameraCfg(
-            prim_path="/World/envs/env_.*/Robot/panda_hand/wrist_cam",
-            update_period=0,
-            height=self.cam_height,
-            width=self.cam_width,
-            debug_vis=True,
-            data_types=["rgb"],
-            offset=TiledCameraCfg.OffsetCfg(
-                # pos=(0.06, 0.0, 0.0),
-                # rot=(-0.70614, 0.03701, 0.03701, -0.70614), convention="ros"
-                pos=(0.13, 0.0, -0.15),
-                rot=(-0.70614, 0.03701, 0.03701, -0.70614),
-                convention="ros",
-                # rot=(1.0, 0.0, 0.0, 0.0),
-            ),
-            spawn=sim_utils.PinholeCameraCfg(
-                focal_length=24.0,
-                focus_distance=400.0,
-                horizontal_aperture=20.955,
-                clipping_range=(0.1, 1e4),
-            ),
-        )
-        setattr(self.scene, "wrist_camera", wrist_cam_cfg)
+        # wrist_cam_cfg = TiledCameraCfg(
+        #     prim_path="/World/envs/env_.*/Robot/panda_hand/wrist_cam",
+        #     update_period=0,
+        #     height=self.cam_height,
+        #     width=self.cam_width,
+        #     debug_vis=True,
+        #     data_types=["rgb"],
+        #     offset=TiledCameraCfg.OffsetCfg(
+        #         # pos=(0.06, 0.0, 0.0),
+        #         # rot=(-0.70614, 0.03701, 0.03701, -0.70614), convention="ros"
+        #         pos=(0.13, 0.0, -0.15),
+        #         rot=(-0.70614, 0.03701, 0.03701, -0.70614),
+        #         convention="ros",
+        #         # rot=(1.0, 0.0, 0.0, 0.0),
+        #     ),
+        #     spawn=sim_utils.PinholeCameraCfg(
+        #         focal_length=24.0,
+        #         focus_distance=400.0,
+        #         horizontal_aperture=20.955,
+        #         clipping_range=(0.1, 1e4),
+        #     ),
+        # )
+        # setattr(self.scene, "wrist_camera", wrist_cam_cfg)
 
 
 @configclass
@@ -83,5 +83,6 @@ class FrankaCubeLiftEnvCameraCfg_PLAY(FrankaCubeLiftEnvCameraCfg):
 
         self.scene.num_envs = 4
         self.scene.env_spacing = 2.5
+        self.episode_length_s = 2.0
         # disable randomization for play
         self.observations.policy.enable_corruption = False
